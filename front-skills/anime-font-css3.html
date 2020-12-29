@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>CSS3 实现上下跳动的文字</title>
+<style>
+.playful {
+  margin: 100px;
+}
+
+.playful span {
+  font-size: 35px;
+  position: relative;
+  color: rgb(64, 158, 255);
+  text-shadow: 0 0 1px #fff, 0 1px 2px #97a8be;
+  animation: scatter 1.75s infinite;
+}
+
+.playful span:nth-child(2n) {
+  animation-delay: 0.3s;
+}
+
+@keyframes scatter {
+  0% {
+    top: 0;
+  }
+  50% {
+    top: -25px;
+  }
+  100% {
+    top: 0;
+  }
+}
+</style>
+</head>
+<body>
+<div class="playful">
+    <span>魚</span>
+    <span>立</span>
+    <span>说</span>
+</div>
+</body>
+</html>

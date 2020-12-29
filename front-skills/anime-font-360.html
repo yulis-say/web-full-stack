@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>anime.js 实现 360° 旋转的文字</title>
+
+<style type="text/css">
+.letter {
+  display: inline-block;
+  opacity: 0;
+}
+</style>
+</head>
+
+<body>
+<h1>
+<span class="letter">魚</span>
+<span class="letter">立</span>
+<span class="letter">说</span>
+<span class="letter">个</span>
+<span class="letter">人</span>
+<span class="letter">主</span>
+<span class="letter">页</span>
+</h1>
+
+<script src="https://cdn.jsdelivr.net/npm/animejs@3.0.1/lib/anime.min.js"></script>
+<script type="text/javascript">
+
+anime({
+  targets: '.letter',
+  opacity: 1,
+  // translateY: 50, 
+  rotate: {
+    value: 360,
+    duration: 2000,
+    easing: 'easeInExpo'// easeInOutSine
+  }, 
+  // scale: anime.stagger([0.7, 1], {from: 'center'}), 
+  delay: anime.stagger(100, {start: 1000}), 
+  // translateX: [-10, 30]
+  easing: 'linear',
+});
+
+</script>
+
+</body>
+</html>

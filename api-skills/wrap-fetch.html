@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>对 fetch() 进行封装</title>
+
+<style type="text/css">
+.container {
+  margin-top: 50px;
+  margin-left: 100px;
+}
+
+button {
+  cursor: pointer;
+  width: 112px;
+  height: 40px;
+  line-height: 41px;
+  line-height: 40px\9;
+  background-color: #4e6ef2;
+  color: #fff;
+  border-radius: 5px;
+  font-size: 17px;
+  box-shadow: none;
+  font-weight: 400;
+  border: 0;
+  outline: 0;
+  letter-spacing: normal;
+}
+
+.post {
+  margin-left: 15px;
+}
+
+#response {
+  margin-top: 10px;
+  font-size: 20px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  
+  <button type="button" class="get">GET</button>
+  <button type="button" class="post">POST</button>
+  <div id="response"></div>
+
+</div>
+
+<script type="text/javascript">
+
+document.querySelector('.get').addEventListener('click', event => {
+    myfetch('http://localhost:8080/get-post-data.php').then(response => {
+        document.getElementById('response').innerHTML = response.text;
+    });
+});
+
+document.querySelector('.post').addEventListener('click', event => {
+    myfetch('http://localhost:8080/get-post-data.php',
+      { method: 'POST' }
+    ).then(response => {
+        document.getElementById('response').innerHTML = response.text;
+    });
+});
+
+
+function myfetch(url, options = {}) {
+    !options.method ? (options.method = 'GET') : null;
+
+    options.mode = 'cors';
+    options.headers = {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    };
+
+    return fetch(url, options).then(response => {
+      return response.json();
+    });
+}
+</script>
+
+</body>
+</html>
